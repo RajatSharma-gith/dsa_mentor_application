@@ -15,17 +15,19 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// routes
+app.use("/api/chat", chatRoutes);
 // serve frontend
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-app.get("*", (req, res) => {
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });
 // DB connect
 connectDB();
 
-// routes
-app.use("/api/chat", chatRoutes);
+
+
 
 // server start
 const PORT = process.env.PORT || 5000;
