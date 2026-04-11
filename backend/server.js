@@ -17,6 +17,7 @@ const __dirname = path.dirname(__filename);
 
 // routes
 app.use("/api/chat", chatRoutes);
+
 // serve frontend
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
