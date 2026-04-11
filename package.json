@@ -1,0 +1,22 @@
+{
+  "name": "dsa_mentor",
+  "version": "1.0.0",
+  "description": "a rude dsa chatbot",
+  "homepage": "https://github.com/rajatxXxsharma/dsa_mentor_application#readme",
+  "bugs": {
+    "url": "https://github.com/rajatxXxsharma/dsa_mentor_application/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajatxXxsharma/dsa_mentor_application.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install && cd frontend && npm install && npm run build",
+    "start": "node backend/server.js"
+  }
+}
