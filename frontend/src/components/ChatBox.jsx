@@ -73,7 +73,7 @@ export default function ChatBox() {
     const [loading, setLoading] = useState(false);
     // 🔹 Load history on page load
     useEffect(() => {
-        fetch(`http://localhost:5000/api/chat/history?userId=${userId}`)
+        fetch(`/api/chat/history?userId=${userId}`)
             .then((res) => res.json())
             .then((data) => {
                 setMessages(data.history || []);
@@ -94,7 +94,7 @@ export default function ChatBox() {
 
         setMessages((prev) => [...prev, userMessage]);
 
-        const res = await fetch("http://localhost:5000/api/chat", {
+        const res = await fetch("/api/chat", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
