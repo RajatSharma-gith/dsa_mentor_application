@@ -24,7 +24,7 @@ const renderMessage = (text) => {
         // normal text before code
         if (match.index > lastIndex) {
             parts.push(
-                <p key={lastIndex}>
+                <p key={lastIndex} className="whitespace-pre-wrap">
                     {text.slice(lastIndex, match.index)}
                 </p>
             );
@@ -32,7 +32,7 @@ const renderMessage = (text) => {
 
         // code block
         parts.push(
-            <div key={match.index} className="relative my-2">
+            <div key={match.index} className="relative my-3 rounded-lg overflow-hidden">
 
                 {/* 🔥 Copy Button */}
                 <button
@@ -47,7 +47,7 @@ const renderMessage = (text) => {
                     language={language || "javascript"}
                     style={vscDarkPlus}
                 >
-                    {code}
+                    {code.trim()}
                 </SyntaxHighlighter>
 
             </div>
@@ -58,7 +58,7 @@ const renderMessage = (text) => {
 
     // remaining text
     if (lastIndex < text.length) {
-        parts.push(<p key={lastIndex}>{text.slice(lastIndex)}</p>);
+        parts.push(<p className="whitespace-pre-wrap" key={lastIndex}>{text.slice(lastIndex)}</p>);
     }
 
     return parts;
