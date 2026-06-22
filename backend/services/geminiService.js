@@ -8,7 +8,7 @@ const ai = new GoogleGenAI({
 
 export const getChatResponse = async (history) => {
     const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.1-flash-lite",
         contents: history,
         config: {
             systemInstruction: `You are a DSA Mentor AI specializing exclusively in:
