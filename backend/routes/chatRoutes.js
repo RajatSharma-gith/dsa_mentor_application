@@ -1,12 +1,17 @@
 import express from "express";
 import Chat from "../models/Chat.js";
 import { getChatResponse } from "../services/geminiService.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
+// All chat routes require a valid JWT
+router.use(authMiddleware);
+
 // POST → send message
 router.post("/", async (req, res) => {
-    const { message, userId } = req.body;
+    const { message } = req.body;
+    const userId = req.user.id; // from verified JWT
 
     try {
         let chat = await Chat.findOne({ userId });
@@ -55,7 +60,7 @@ router.post("/", async (req, res) => {
 
 // GET → fetch history
 router.get("/history", async (req, res) => {
-    const { userId } = req.query;
+    const userId = req.user.id; // from verified JWT
 
     try {
         const chat = await Chat.findOne({ userId });
